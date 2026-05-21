@@ -37,11 +37,7 @@ jobs:
   test-triggers-manual:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Definir nombre
-        run: echo "USERNAME=${{ inputs.nombre }}" >> $GITHUB_ENV
-      - name: Definir lenguaje
-        run: echo "LANGUAGE=${{ inputs.lenguaje_favorito }}" >> $GITHUB_ENV
-      - name: Correr script
-        run: python hola_lenguaje.py
+      - name: Mostrar nombre
+        run: echo "${{ inputs.nombre }}"
+      - name: Mostrar lenguaje
+        run: echo "${{ inputs.lenguaje_favorito }}"
