@@ -1,0 +1,44 @@
+name: Expresiones
+run-name: Expresiones con github actions
+on:
+    workflow_dispatch:
+        inputs:
+            logLevel: 
+                description: Log Level to use in workflow
+                required: true
+                default: 'warning'
+                type: choice
+                options:
+                - info
+                - warning
+                - debug
+            numberFilesModified: 
+                description: Number of files modified in the commit
+                required: true
+                default: 1
+                type: number
+jobs:
+    if-log-level-info:
+        if: ${{ inputs.logLevel == 'info' }}
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Log Level is info!"
+            - run: echo "Log Level is info 🚀"
+    if-log-level-warning:
+        if: ${{ inputs.logLevel == 'warning' }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Log Level is warning
+              run: echo "Log Level is warning"
+    if-log-level-debug:
+        if: ${{ inputs.logLevel == 'debug' }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Log Level is debug
+              run: echo "Log Level is debug"
+    if-number-files-modified-gt-2:
+        if: ${{ inputs.numberFilesModified > 2 }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Number of files modified is greater than 2
+              run: echo "Number of files modified is greater than 2"
