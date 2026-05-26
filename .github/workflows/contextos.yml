@@ -1,0 +1,21 @@
+name: Contextos
+run-name: Trabajando con contextos en github actions
+on: [push]
+jobs:
+    contextos-github-actions:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "🎉 El trabajo se ha activado automáticamente por un evento ${{ github.event_name }}."
+            - run: echo "🐧 Este trabajo ahora se está ejecutando en un servidor ${{ runner.os }} alojado por GitHub!"
+            - run: echo "🔎 El nombre de tu rama es ${{ github.ref }} y tu repositorio es ${{ github.repository }}."
+            
+    no-branch-main:
+        if: ${{ github.ref != 'refs/heads/main' }}
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+          - name: Definir variable
+            run: echo "NAME=${{ github.actor }}" >> $GITHUB_ENV
+          - name: Correr script
+            run: python app.py
