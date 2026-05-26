@@ -1,7 +1,7 @@
 name: Variables
 run-name: Worlflow de actions utilizando variables
 on:
-    workflow_dispatch
+    [push, workflow_dispatch]
 env:
     DAY_OF_WEEK: Lunes 25
     MONTH: Mayo
